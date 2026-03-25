@@ -6,16 +6,14 @@
 ############################
 
 
-# MAKE OBJECT FILE
+# MAKE EXECUTABLE FILE
 build:
-	gcc -c tetris_main.c tetris_frontend.c tetris_backend.c tetris_resource.c 
-
-# MAKE EXECUTE FILE
-	gcc -o tetris tetris_main.o tetris_frontend.o tetris_backend.o tetris_resource.o -lncurses
+	gcc -o ./output/tetris tetris_main.c tetris_frontend.c tetris_backend.c tetris_resource.c -lncurses
 
 # EXECUTE TETRIS
-	./tetris
-	
+run:
+	./output/tetris
+
+# CLEAN TETRIS	
 clean:
-	rm *.o
-	rm tetris
+	rm ./output/tetris
