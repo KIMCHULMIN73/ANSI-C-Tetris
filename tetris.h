@@ -108,38 +108,39 @@ enum heartbeat {beat0, beat1, beat2, beat3, beat4, beat5};    // to decide virtu
 
 
 /* data structure of parameters for each game */
-struct gameparam {
-  /* regarding game window */
-  WINDOW *wnd;            // pointer of window(independent partial screen on standard screen) to draw game board
-  int wnd_width;          // x-size of window
-  int wnd_height;         // y-sixe of window
-  int wnd_x;              // x-position of window
-  int wnd_y;              // y-position of window
+struct gameparam
+{
+    /* regarding game window */
+    WINDOW *wnd;            // pointer of window(independent partial screen on standard screen) to draw game board
+    int wnd_width;          // x-size of window
+    int wnd_height;         // y-sixe of window
+    int wnd_x;              // x-position of window
+    int wnd_y;              // y-position of window
 
-  /* regarding tetromino */
-  int curr_tetromino;     // current one among 7 tetromino symbols
-  int next_tetromino;     // next one among 7 tetromino symbols
-  int rot_degree;         // rotation degree of curr_tetromino
-  int tet_x;              // x-position of curr_tetromino
-  int tet_y;              // y-position of curr_tetromino
-  int key_in;             // key input of game window to move tetromino
-  enum heartbeat tick;    // to save current heartbeat
-  int num_of_tet;         // number of tetrominos those used in one-game
+    /* regarding tetromino */
+    int curr_tetromino;     // current one among 7 tetromino symbols
+    int next_tetromino;     // next one among 7 tetromino symbols
+    int rot_degree;         // rotation degree of curr_tetromino
+    int tet_x;              // x-position of curr_tetromino
+    int tet_y;              // y-position of curr_tetromino
+    int key_in;             // key input of game window to move tetromino
+    enum heartbeat tick;    // to save current heartbeat
+    int num_of_tet;         // number of tetrominos those used in one-game
   
-  /* regarding game record */
-  int score;              // score of game
-  int line_cnt;           // number of erase line by 'check_full_lint()'
-  int bonus_score;        // bonus score to get bonus item
-  int bonus_item;         // bonus item
-  int highscore;          // hi-score of game
-  int stage;              // stage of game
-  int win_count;          // count of number of win
+    /* regarding game record */
+    int score;              // score of game
+    int line_cnt;           // number of erase line by 'check_full_lint()'
+    int bonus_score;        // bonus score to get bonus item
+    int bonus_item;         // bonus item
+    int highscore;          // hi-score of game
+    int stage;              // stage of game
+    int win_count;          // count of number of win
   
-  /* regarding game speed & level */
-  int tickcount;          // to count virtual timer ticks
-  int move_resolution;    // a number of ticks, needed to move tetromino
-  long speedup_count;     // to adjust game level (to decrease 'move_period' value, every SPEED_UP_BASE ticks)
-  int bottom_cnt;         // maximum value of 'bottom_cnt' to count ticks after tetromino moved down bottom
+    /* regarding game speed & level */
+    int tickcount;          // to count virtual timer ticks
+    int move_resolution;    // a number of ticks, needed to move tetromino
+    long speedup_count;     // to adjust game level (to decrease 'move_period' value, every SPEED_UP_BASE ticks)
+    int bottom_cnt;         // maximum value of 'bottom_cnt' to count ticks after tetromino moved down bottom
 };
 
 
