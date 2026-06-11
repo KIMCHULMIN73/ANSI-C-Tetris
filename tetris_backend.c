@@ -27,72 +27,79 @@ extern char z_tetromino[4][4][4];
 /* initialize tetris game */
 enum result init_game(enum gameid gid, enum gamemode mod)
 {
-  struct gameparam *game;
+    struct gameparam *game;
 
-  game = parameter_db(gid);    // get parameter handle
- 
-  draw_title();                // draw title 'TETRIS'
-  
-  if(game_status[gid]) {
-    init_window(gid);          // init game window
-    init_param(gid, mod);      // init game parameters
-    init_board(gid);           // init game board
-    wrefresh(game->wnd);
-  }
-  
-  init_timer(gid, on);         // initialize timer
-    
-  return success;
+    game = parameter_db(gid);    // get parameter handle
+
+    draw_title();                // draw title 'TETRIS'
+
+    if(game_status[gid])
+    {
+        init_window(gid);          // init game window
+        init_param(gid, mod);      // init game parameters
+        init_board(gid);           // init game board
+        wrefresh(game->wnd);
+    }
+
+    init_timer(gid, on);         // initialize timer
+
+    return success;
 }
-
 
 /* deinitialize tetris game */
 enum result deinit_game(enum gameid gid)
 {
-  struct gameparam *game;
+    struct gameparam *game;
 
-  game = parameter_db(gid);      // get parameter handle
+    game = parameter_db(gid);      // get parameter handle
 
-  init_timer(gid, off);          // deinitialize timer
+    init_timer(gid, off);          // deinitialize timer
 
-  destroy_win(game->wnd);        // destroy game window for game1
+    destroy_win(game->wnd);        // destroy game window for game1
 
-  return success;  
+    return success;  
 }
 
 
 /* initialize game parameters of each player */
 enum result init_param(enum gameid gid, enum gamemode mod)
 {
-  static enum flag status = off;
-  struct gameparam *game;
+    static enum flag status = off;
+    struct gameparam *game;
 
-  game = parameter_db(gid);
-  
-  if(mod == newmode) srand((unsigned)time(NULL));    // set random number seed with current time to determine next tetromino (in 'decice_next_tetromino()' function)  
-          
-  /* initialize game parameters */
-  game->curr_tetromino = I_TETROMINO;
-  game->next_tetromino = show_next_tetromino(game->wnd_x, game->wnd_y - TITLE_HEIGHT, gid);
-  game->rot_degree = DEG_90;
-  game->tet_x = (BOARD_WIDTH / 2) - 1;               // start tet_x point
-  game->tet_y = 0;                                   // start tet_y point
-  if(mod == newmode) game->tick = beat0;
-  game->num_of_tet = 0;
-  if(mod == newmode) game->bonus_item = 0;
-  game->bonus_score = 0;
-  game->tickcount = 0;
-  game->bottom_cnt = 0;
-  game->speedup_count = 0;
-  game->move_resolution = MAX_MOVE_RESOLUTION;
-  game->score = 0;
-  game->line_cnt = 0;
-  if(status == off) { game->highscore = 0; status = on; }
-  if(mod == newmode) game->stage = 1;
-  if(mod == newmode) game->win_count = 0;
-  game->key_in = 0;
-  
-  return success;
+    game = parameter_db(gid);
+
+    if(mod == newmode) srand((unsigned)time(NULL));    // set random number seed with current time to determine next tetromino (in 'decice_next_tetromino()' function)  
+
+    /* initialize game parameters */
+    game->curr_tetromino = I_TETROMINO;
+    game->next_tetromino = show_next_tetromino(game->wnd_x, game->wnd_y - TITLE_HEIGHT, gid);
+    game->rot_degree = DEG_90;
+    game->tet_x = (BOARD_WIDTH / 2) - 1;               // start tet_x point
+    game->tet_y = 0;                                   // start tet_y point
+    if(mod == newmode)
+        game->tick = beat0;
+    game->num_of_tet = 0;
+    if(mod == newmode) game->bonus_item = 0;
+    game->bonus_score = 0;
+    game->tickcount = 0;
+    game->bottom_cnt = 0;
+    game->speedup_count = 0;
+    game->move_resolution = MAX_MOVE_RESOLUTION;
+    game->score = 0;
+    game->line_cnt = 0;
+    if(status == off)
+    {
+        game->highscore = 0;
+        status = on;
+    }
+    if(mod == newmode)
+        game->stage = 1;
+    if(mod == newmode)
+        game->win_count = 0;
+    game->key_in = 0;
+
+    return success;
 }
 
 
