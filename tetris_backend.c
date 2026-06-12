@@ -405,39 +405,56 @@ enum result keypad_hadler(enum gameid gid, enum flag gameover)
     if (gid == game1)
         switch(game->key_in)
         {
-            case KEY_LEFT      : move_tetromino(left, gid); break;
-            case KEY_RIGHT     : move_tetromino(right, gid); break;
-            case KEY_DOWN      : move_tetromino(down, gid); break;
-            case KEY_UP        : move_tetromino(rotate, gid); break;
-            case KEY_IC        : drop_tetromino(gid); break;
-            case KEY_BACKSPACE : on_game = off; break; // if(game->bonus_item > 0) item_use(gid);
-            case KEY_F(12)     : cheat_key(gid); break;
-            case KEY_F(11)     : game_status[gid] = off; break;
+            case KEY_LEFT      : move_tetromino(left, gid);
+                                 break;
+            case KEY_RIGHT     : move_tetromino(right, gid);
+                                 break;
+            case KEY_DOWN      : move_tetromino(down, gid);
+                                 break;
+            case KEY_UP        : move_tetromino(rotate, gid);
+                                 break;
+            case KEY_IC        : drop_tetromino(gid);
+                                 break;
+            case KEY_BACKSPACE : on_game = off;
+                                 // if(game->bonus_item > 0) item_use(gid);
+                                 break;
+            case KEY_F(12)     : cheat_key(gid);
+                                 break;
+            case KEY_F(11)     : game_status[gid] = off;
+                                 break;
             default            : break;
         }
         else if (gid == game2)
             switch(game->key_in)
             {
                 case 'G'      : 
-                case 'g'      : move_tetromino(left, gid); break;
+                case 'g'      : move_tetromino(left, gid);
+                                break;
                 case 'J'      : 
-                case 'j'      : move_tetromino(right, gid); break;
+                case 'j'      : move_tetromino(right, gid);
+                                break;
                 case 'H'      :
-                case 'h'      : move_tetromino(down, gid); break;
+                case 'h'      : move_tetromino(down, gid);
+                                break;
                 case 'Y'      :
-                case 'y'      : move_tetromino(rotate, gid); break;
+                case 'y'      : move_tetromino(rotate, gid);
+                                break;
                 case 'A'      :
-                case 'a'      : drop_tetromino(gid); break;
-                case '1'      : on_game = off; break; // if(game->bonus_item > 0) item_use(gid);
-                case KEY_F(1) : cheat_key(gid); break;
-                case KEY_F(2) : game_status[gid] = off; break;
+                case 'a'      : drop_tetromino(gid);
+                                break;
+                case '1'      : on_game = off;
+                                // if(game->bonus_item > 0) item_use(gid);
+                                break;
+                case KEY_F(1) : cheat_key(gid);
+                                break;
+                case KEY_F(2) : game_status[gid] = off;
+                                break;
                 default       : break;
             }
         else if (gid == game3) ;
         else if (gid == game4) ;
         else ;
 */
-
     }
 
     return success;
